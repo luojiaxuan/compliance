@@ -1,8 +1,9 @@
 ## Description
-lab1.py for lab1 data analysis.
+`lab1.py` for lab1 data analysis.
 
 ## tools and library
-1.  <span style="background-color: grey; color: white;">python</span>
-2. <span style="background-color: grey; color: white;">pandas</span>   and <span style="background-color: grey; color: white;">scipy</span> library
+`python` \
+`pandas` and `scipy` package
 
 ## Analysis outcome
+`please read lab1_report.txt`
