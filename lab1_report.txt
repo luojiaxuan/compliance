@@ -1,0 +1,53 @@
+Descriptive Statistics for Numerical Columns: 
+       Employee ID  Strong Passwords (1-5)  Team Expectation (1-5)  Phishing Confidence (1-5)  Training Hours (0-10)
+count     50.00000                50.00000                50.00000                  50.000000              50.000000
+mean      25.50000                 3.12000                 3.12000                   3.140000               4.540000
+std       14.57738                 1.34983                 1.34983                   1.370387               3.025133
+min        1.00000                 1.00000                 1.00000                   1.000000               0.000000
+25%       13.25000                 2.00000                 2.00000                   2.000000               2.000000
+50%       25.50000                 3.00000                 3.00000                   3.000000               4.000000
+75%       37.75000                 4.00000                 4.00000                   4.000000               7.000000
+max       50.00000                 5.00000                 5.00000                   5.000000              10.000000
+
+
+
+Percentage of 'Yes' and 'No' values:
+    Percentage of 'Yes': 50.00%
+    Percentage of 'No': 50.00%
+
+
+Correlation coefficient between 'Training Hours' and 'Phishing Confidence': 0.9068869997786082
+Results: Training Hours and Phishing Confidence are positive correlated.
+
+
+Point-biserial correlation between 'Clicked Suspicious Link' and 'Training Hours':
+Point-biserial correlation: -0.8481569626333668
+P-value: 7.628929134908239e-15
+Results: Indicates a strong negative relationship between 'Clicked Suspicious Link' on yes and more 'Training Hours'.
+
+
+Mean Training Hours for each group:
+    Mean Training Hours for group of people choose 'Yes': 2.0
+    Mean Training Hours for gourp of people choose'No': 7.08
+
+
+T-test results between yes_group and no_group:
+t-statistic: -11.092513927225127
+p-value: 7.628929134908133e-15
+Results: The analysis shows that there is a statistically significant and substantial difference in training hours between Yes and No group.
+
+
+
+Percentage of 'Yes' and 'No' values:
+    Percentage of 'Yes': 50.00%
+    Percentage of 'No': 50.00%
+
+
+Correlation coefficient between 'Training Hours' and 'Phishing Confidence': 0.9068869997786082
+Results: Training Hours and Phishing Confidence are positive correlated.
+
+
+Point-biserial correlation between 'Clicked Suspicious Link' and 'Training Hours':
+Point-biserial correlation: -0.8481569626333668
+P-value: 7.628929134908239e-15
+Results: Indicates a strong negative relationship between 'Clicked Suspicious Link' on yes and more 'Training Hours'.
