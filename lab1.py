@@ -1,6 +1,8 @@
 import pandas as pd
 from scipy.stats import pointbiserialr
-from scipy.stats import ttest_ind
+from scipy.stats import ttest_ind, sem
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Replace 'your_file.xlsx' with the path to your actual file
 df = pd.read_excel('Employee_Survey_Results.xlsx', engine='openpyxl')
@@ -38,6 +40,17 @@ print(f"Correlation coefficient between 'Training Hours' and 'Phishing Confidenc
 print("Results: Training Hours and Phishing Confidence are positive correlated.")
 
 
+# Create a scatter plot with regression line
+plt.figure(figsize=(10, 6))
+sns.regplot(x='Training Hours (0-10)', y='Phishing Confidence (1-5)', data=df)
+plt.title(f"Scatter Plot of Training Hours vs Phishing Confidence with Regression Line\nCorrelation Coefficient: {correlation:.2f}")
+plt.xlabel('Training Hours (0-10)')
+plt.ylabel('Phishing Confidence (1-5)')
+plt.grid(True)
+plt.show()
+
+
+
 print("\n")
 # Calculate point-biserial correlation between 'Clicked Suspicious Link' and 'Training Hours'
 # Convert 'Clicked Suspicious Link' to binary (1 for Yes, 0 for No)
@@ -53,6 +66,15 @@ print(f"P-value: {p_value}")
 
 print("Results: Indicates a strong negative relationship between 'Clicked Suspicious Link' on yes and more 'Training Hours'.")
 
+# Create a violin plot
+plt.figure(figsize=(10, 6))
+sns.violinplot(x='Clicked Suspicious Link (Yes/No)', y='Training Hours (0-10)', data=df)
+plt.title('Violin Plot of Training Hours by Clicked Suspicious Link')
+plt.xlabel('Clicked Suspicious Link (0 = No, 1 = Yes)')
+plt.ylabel('Training Hours (0-10)')
+plt.grid(True)
+plt.show()
+
 
 print("\n")
 # Calculate means for each group
@@ -65,11 +87,27 @@ print("Mean Training Hours for each group: ")
 print(f"    Mean Training Hours for group of people choose 'Yes': {mean_yes}")
 print(f"    Mean Training Hours for gourp of people choose'No': {mean_no}")
 
+# Create a bar plot
+plt.figure(figsize=(10, 6))
+sns.barplot(x=['Yes', 'No'], y=[mean_yes, mean_no])
+plt.title('Mean Training Hours by Clicked Suspicious Link')
+plt.xlabel('Clicked Suspicious Link (Yes/No)')
+plt.ylabel('Mean Training Hours (0-10)')
+plt.grid(True)
+plt.show()
+
+
 
 print("\n")
 # Perform t-test on the two groups on 'Training Hours'
 yes_group = df[df['Clicked Suspicious Link (Yes/No)'] == 1]['Training Hours (0-10)']
 no_group = df[df['Clicked Suspicious Link (Yes/No)'] == 0]['Training Hours (0-10)']
+
+# Calculate means and standard errors
+mean_yes = yes_group.mean()
+mean_no = no_group.mean()
+sem_yes = sem(yes_group)
+sem_no = sem(no_group)
 
 t_stat, p_value = ttest_ind(yes_group, no_group)
 # Print the t-statistic and p-value
@@ -79,3 +117,12 @@ print(f"p-value: {p_value}")
 
 print("Results: The analysis shows that there is a statistically significant and substantial difference in training hours between Yes and No group.")
 print("\n")
+
+# Create a t-test bar plot with error bars
+plt.figure(figsize=(10, 6))
+plt.bar(['Yes', 'No'], [mean_yes, mean_no], yerr=[sem_yes, sem_no], capsize=5)
+plt.title(f'Mean Training Hours by Clicked Suspicious Link\nT-test p-value: {p_value:.4f}')
+plt.xlabel('Clicked Suspicious Link (Yes/No)')
+plt.ylabel('Mean Training Hours (0-10)')
+plt.grid(True)
+plt.show()
