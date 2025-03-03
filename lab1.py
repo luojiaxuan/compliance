@@ -59,23 +59,3 @@ print("\n")
 mean_yes = df[df['Clicked Suspicious Link (Yes/No)'] == 1]['Training Hours (0-10)'].mean()
 mean_no = df[df['Clicked Suspicious Link (Yes/No)'] == 0]['Training Hours (0-10)'].mean()
 
-
-# Print the means
-print("Mean Training Hours for each group: ")
-print(f"    Mean Training Hours for group of people choose 'Yes': {mean_yes}")
-print(f"    Mean Training Hours for gourp of people choose'No': {mean_no}")
-
-
-print("\n")
-# Perform t-test on the two groups on 'Training Hours'
-yes_group = df[df['Clicked Suspicious Link (Yes/No)'] == 1]['Training Hours (0-10)']
-no_group = df[df['Clicked Suspicious Link (Yes/No)'] == 0]['Training Hours (0-10)']
-
-t_stat, p_value = ttest_ind(yes_group, no_group)
-# Print the t-statistic and p-value
-print("T-test results between yes_group and no_group: ")
-print(f"t-statistic: {t_stat}")
-print(f"p-value: {p_value}")
-
-print("Results: The analysis shows that there is a statistically significant and substantial difference in training hours between Yes and No group.")
-print("\n")
